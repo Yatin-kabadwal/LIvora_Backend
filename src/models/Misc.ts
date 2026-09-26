@@ -172,7 +172,12 @@ export const Review = mongoose.model<IReview>("Review", reviewSchema);
 /* ------------------------------ Settings (singleton) ------------------------------ */
 export interface ISettings extends Document {
   key: string;
-  resortName: string; tagline: string; phone: string; whatsapp: string; email: string;
+  resortName: string;
+tagline: string;
+phone: string;
+phoneSecondary: string;
+whatsapp: string;
+email: string;
   address: string; mapsUrl: string; mapsEmbedUrl: string; latitude?: number; longitude?: number;
   checkInTime: string; checkOutTime: string; cancellationHours: number;
   gstNumber: string; mealPlans: { code: string; label: string; adultPrice: number; childPrice: number; description: string }[];
@@ -181,7 +186,12 @@ export interface ISettings extends Document {
 }
 const settingsSchema = new Schema<ISettings>({
   key: { type: String, default: "main", unique: true },
-  resortName: String, tagline: String, phone: String, whatsapp: String, email: String,
+  resortName: String,
+tagline: String,
+phone: String,
+phoneSecondary: { type: String, default: "" },
+whatsapp: String,
+email: String,
   address: String, mapsUrl: String, mapsEmbedUrl: String, latitude: Number, longitude: Number,
   checkInTime: { type: String, default: "14:00" },
   checkOutTime: { type: String, default: "11:00" },

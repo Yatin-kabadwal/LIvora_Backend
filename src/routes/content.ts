@@ -24,7 +24,12 @@ settingsRouter.put(
   authenticate,
   isManager,
   validate(z.object({
-    resortName: z.string().min(2), tagline: z.string(), phone: z.string(), whatsapp: z.string(), email: z.string().email(),
+    resortName: z.string().min(2),
+tagline: z.string(),
+phone: z.string(),
+phoneSecondary: z.string(),
+whatsapp: z.string(),
+email: z.string().email(),
     address: z.string(), mapsUrl: z.string(), mapsEmbedUrl: z.string(),
     checkInTime: z.string(), checkOutTime: z.string(), cancellationHours: z.coerce.number().min(0),
     gstNumber: z.string(),
