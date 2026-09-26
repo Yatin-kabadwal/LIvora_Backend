@@ -1,0 +1,52 @@
+services:
+  - type: web
+    name: corbett-vedant-api
+    runtime: node
+    plan: free
+    rootDir: backend
+    # --include=dev is required: Render sets NODE_ENV=production, which would otherwise skip TypeScript.
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 20.18.0
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 15m
+      - key: JWT_REFRESH_EXPIRES_IN
+        value: 30d
+      - key: FRONTEND_GUEST_URL
+        sync: false
+      - key: FRONTEND_ADMIN_URL
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: EMAIL_FROM
+        value: Corbett The Vedant <onboarding@resend.dev>
+      - key: NOTIFY_EMAIL
+        value: Livorahospitality06@gmail.com
+      - key: SEED_ADMIN_EMAIL
+        sync: false
+      - key: SEED_ADMIN_PASSWORD
+        sync: false
+      - key: SEED_STAFF_EMAIL
+        sync: false
+      - key: SEED_STAFF_PASSWORD
+        sync: false
+      - key: RESORT_NAME
+        value: Corbett The Vedant By Livora
